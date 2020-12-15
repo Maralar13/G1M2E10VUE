@@ -14,17 +14,17 @@
         <form class="login__container--form">
           <div class="document-select">
             <label>
-              <input type="checkbox" name="" id="cbox1" value="checkbox">Documento Médico
+              <input type="radio" name="docs" id="cbox1">Documento Médico
             </label>
           </div>
           <div class="document-select">
             <label>
-              <input type="checkbox" name="" id="cbox1" value="checkbox">Documento Legal
+              <input type="radio" name="docs" id="cbox1">Documento Legal
             </label>
           </div>
           <div class="document-select">
             <label>
-              <input type="checkbox" name="" id="cbox1" value="checkbox">Documento Financiero
+              <input type="radio" name="docs" id="cbox1">Documento Financiero
             </label>
 				  </div>
           
