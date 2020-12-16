@@ -4,8 +4,9 @@
       <h1>Tracter</h1>
       <nav>
         <button v-on:click="init" v-if="is_auth">Inicio</button>
-        <button v-on:click="getDoc" v-if="is_auth">CargarDocumento</button>
-        <button v-if="is_auth">CerrarSesión</button>
+        <button v-on:click="getDoc" v-if="is_auth">Cargar Documento</button>
+        <button v-on:click="getDoc" v-if="is_auth">Subir Documento</button>
+        <button v-if="is_auth">Cerrar Sesión</button>
       </nav>
     </div>
     
