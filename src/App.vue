@@ -1,47 +1,27 @@
 <template>
   <div id="app">
     <div class="header">
-      <h1>Tracker</h1>
-      <nav>
-        <button > Inicio </button>
-        <button v-if="is_auth" > Descargas </button>
-        <button v-if="is_auth" >Cerrar Sesión</button>
-      </nav>
-    </div>
-    <div class="main-component">
-      <section class="login__container">
-        <h2 class="title">Documentos</h2>
-        <form class="login__container--form">
-          <div class="document-select">
-            <label>
-              <input type="radio" name="docs" id="cbox1">Documento Médico
-            </label>
-          </div>
-          <div class="document-select">
-            <label>
-              <input type="radio" name="docs" id="cbox1">Documento Legal
-            </label>
-          </div>
-          <div class="document-select">
-            <label>
-              <input type="radio" name="docs" id="cbox1">Documento Financiero
-            </label>
-				  </div>
-          
-				<button class="button" v-on:click="init" v-if="is_auth" >Buscar</button>
-        <button class="button" v-on:click="getBalance" v-if="is_auth"> Verificar vigencia</button>
-				
-			</form>
-
-
-      </section>
-
-
-
-
-
+      <div class="header-left">
+        <img src="./img/lupa.png" width="80px" alt="">
+        <h1>Tracker</h1>
+      </div>      
+            
+        <nav>
+          <button v-on:click="init" v-if="is_auth"> Inicio </button>
+          <button v-on:click="getBalance" v-if="is_auth" > Documentos </button>  
+                
+        </nav>
       
     </div>
+    
+    <div class="main-component">   
+ 
+    <router-view> </router-view>
+    
+
+    </div>
+  
+    
     <div class="footer">
       <h2>Misión TIC 2022</h2>
     </div>
@@ -50,19 +30,63 @@
 </template>
 
 <script>
+
+import vueRouter from 'vue-router'
+
 export default {
   name: 'App',
   components: {},
+
+methods:{
+    /*updateAuth: function(){
+      var self = this
+      self.is_auth  = localStorage.getItem('isAuth') || false
+
+      if(self.is_auth == false)
+        self.$router.push({name: "user_auth"})
+
+      else{
+        let username = localStorage.getItem("current_username")
+        self.$router.push({name: "user", params:{ username: username }})
+      }  
+    },*/
+
+
+
+
   data: function(){
     return {
-      is_auth: localStorage.getItem('isAuth') || false
+      is_auth: localStorage.getItem('isAuth') || false ,
+      base_datos : [{doc_Name: "Historia Clinica",field: "Documento Médico", author:"Marisol", expiration:"2019-12-15"},
+                    {doc_Name: "Camara y comercio",field: "Documento Legal", author:"Luis", expiration:"2020-12-20"},
+                    {doc_Name: "Certificacion Bancaria",field: "Documento Economia", author:"Juan", expiration:"2021-6-17"} ]
+      
       }
+
   },
   methods: {
+
+    init: function(){
+    if(this.$route.name != "user"){
+      let username = localStorage.getItem("current_username")
+      this.$router.push({name: "user", params:{username:username}})
+    }
+    },
+    getBalance: function(){
+    if(this.$route.name != "user_balance"){
+      let username = localStorage.getItem("current_username")
+      this.$router.push({ name:"user_balance",
+      params:{username:username}
+    })
+  }
+},
+
+
   },
   beforeCreate: function(){
-    localStorage.setItem('current_username', 'camilo24')
+    localStorage.setItem('current_username', 'Sebastian')
     localStorage.setItem('isAuth', true)
+    this.$router.push({name:"user",params:{username:'camilo24'}})
     }
 }
 
@@ -72,6 +96,11 @@ export default {
 
 body{
   margin: 0 0 0 0;
+ 
+}
+.normal{
+  padding: 225px;
+   background: linear-gradient(#21C08B, #6930C3);
 }
 .header{
   margin: 0%;
@@ -105,6 +134,7 @@ body{
   border: 1px solid #E5E7E9;
   border-radius: 5px;
   padding: 10px 20px;
+  cursor: pointer;
 }
 .header nav button:hover{
   color: #283747;
@@ -210,6 +240,21 @@ div .main-component .button button:hover {
   background: #E5E7E9;
   border: 1px solid #E5E7E9;
 
+}
+.header-left{
+  display: flex;
+  padding: 15px;
+}
+.header-left h1{
+  padding: 5px;
+  }
+.header-rigth{
+  display:flex;
+  align-items: center;
+
+}
+nav {
+  display: none;
 }
 
 </style>
