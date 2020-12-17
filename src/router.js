@@ -24,11 +24,11 @@ const router = new vueRouter({
         name: "user_balance",
         component: UserBalance
         },
-        
+
         {
 
 
-            path: '/resultado/:doc_Name',
+            path: '/resultado/1',
             name: "resultado",
             component: Resultado
             },

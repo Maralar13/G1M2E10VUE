@@ -77,9 +77,8 @@ export default {
       let username = localStorage.getItem("current_username")
       this.$router.push({ name:"user_balance",
       params:{username:username}
-    })
-  }
-},
+    })}},
+    
 
 
   },

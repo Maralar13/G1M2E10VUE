@@ -35,7 +35,7 @@
             </label>
 				  </div>
           
-				<button type="submit" class="button" v-on:click="init" >Buscar</button>
+				<button  class="button" v-on:click="getResultado" >Buscar</button>
         <button type="submit" class="button" v-on:click="getBalance" > Verificar vigencia</button>
 				
 			</form>
@@ -52,9 +52,18 @@
     name: 'UserBalance',
     methods: {
       busqueda: function(){
-        alert("Hola mundo");
-      }
-    },
+        alert("Hola mundo");      
+      },
+    
+     getResultado: function(){
+    if(this.$route.name != "resultado"){
+      let username = localStorage.getItem("current_username")
+      this.$router.push({ name:"resultado",
+      params:{username:username}
+    }) 
+  }
+},
+},
 
     created: function(){
     this.username = this.$route.params.username
