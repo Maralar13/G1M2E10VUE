@@ -31,13 +31,13 @@
 
 <script>
 
-import vueRouter from 'vue-router'
+//import vueRouter from 'vue-router'
 
 export default {
   name: 'App',
   components: {},
 
-methods:{
+//methods:{
     /*updateAuth: function(){
       var self = this
       self.is_auth  = localStorage.getItem('isAuth') || false

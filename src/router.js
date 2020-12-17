@@ -24,14 +24,7 @@ const router = new vueRouter({
         name: "user_balance",
         component: UserBalance
         },
-
         
-        
-            {
-                path: '/user/auth',
-                name: "user_auth",
-                component: UserAuth
-            },
         {
 
 
