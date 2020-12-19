@@ -9,7 +9,8 @@
         <nav>
           <button v-on:click="init" v-if="is_auth"> Inicio </button>
           <button v-on:click="getBalance" v-if="is_auth" > Documentos </button>  
-                
+          <button v-on:click="getBalance" v-if="is_auth" > Documentos </button>  
+     
         </nav>
       
     </div>
